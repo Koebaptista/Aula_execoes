@@ -48,55 +48,17 @@ public class Testes {
 			
 			dataOut = LocalDate.parse(checkout, fmt1);
 			
-			LocalDate now = LocalDate.now();
+			String error = reserv.updateDates(dataIn2, dataOut);
 			
-			if(dataIn2.isBefore(now) || dataOut.isBefore(now)) {
-				System.out.println("Error in reservation: Reservation dates for update must be future dates");
-			}
-			else if (!dataOut.isAfter(dataIn1)){
-				System.out.println("Error in reservation: Check-out date must be after check-in date");
+			if (error != null) {
+				System.out.println("Erro no no update" + error);
+			} else {
+				System.out.println("Reservation: " + reserv);
 				
-			}else {
-				reserv.updateDates(dataIn2, dataOut);
-				System.out.println(reserv.toString());	
 			}
-		}
-		/*
-		System.out.println();
-		//---------------------------------------------------------------
-		
-		System.out.println("Enter data to update the reservation:");
-		System.out.println("Check-in date (dd/MM/yyyy):");
-		sc.nextLine();
-		checkin = sc.nextLine();
-		
-		LocalDate dataIn2 = LocalDate.parse(checkin, fmt1);
-		
-		System.out.println("Check-out date (dd/MM/yyyy):");
-		checkout = sc.nextLine();
-		
-		dataOut = LocalDate.parse(checkout, fmt1);
-		
-		
-		
-		if(duracaoEntre(dataIn1, dataOut)< 0 ) {
-			System.out.println("Error in reservation: Check-out date must be after check-in date");
-		}
-		else if (duracaoEntre(dataIn1, dataIn2) < 0){
-			System.out.println("Error in reservation: Reservation dates for update must be future dates");
-		}
-		else {
-			reserv.updateDates(dataIn2, dataOut);
-			System.out.println(reserv.toString());
+			
+			
 		}
 		
-		sc.close();
-	}
-	public static long duracaoEntre(LocalDate data1, LocalDate data2) {
-		
-		Duration drt = Duration.between(data1, data2);
-		return drt.toDays();
-		
-	}*/
 	}
 }
