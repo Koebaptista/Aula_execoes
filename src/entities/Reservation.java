@@ -40,7 +40,7 @@ public class Reservation {
 	
 	public long duration() {
 		
-		Duration duration = Duration.between(checkin, checkout);
+		Duration duration = Duration.between(checkin.atStartOfDay(), checkout.atStartOfDay());
 		return duration.toDays();
 	}
 	public void updateDates(LocalDate checkin, LocalDate checkout) {
@@ -49,7 +49,7 @@ public class Reservation {
 	}
 	public String toString() {
 		
-		return "Reservation: Romm: " + roomNumber + ", check-in: " + checkin.format(fmt1) + ", check-out: " + checkout.format(fmt1) + ", " + duration() + "Days"; 
+		return "Reservation: Romm: " + roomNumber + ", check-in: " + checkin.format(fmt1) + ", check-out: " + checkout.format(fmt1) + ", " + duration() + " Days"; 
 	}
 	
 
