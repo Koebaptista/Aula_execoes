@@ -38,21 +38,15 @@ public class Reservation {
 		return checkout;
 	}
 	
-	public Integer duration() {
+	public long duration() {
 		
 		Duration duration = Duration.between(checkin, checkout);
-		return (int) duration.toDays();
-	}
-public Integer duration2(LocalDate checkin) {
-		
-		Duration duration = Duration.between(this.checkin, checkin);
-		return (int) duration.toDays();
+		return duration.toDays();
 	}
 	public void updateDates(LocalDate checkin, LocalDate checkout) {
 			this.checkin = checkin;
 			this.checkout = checkout;
 	}
-	
 	public String toString() {
 		
 		return "Reservation: Romm: " + roomNumber + ", check-in: " + checkin.format(fmt1) + ", check-out: " + checkout.format(fmt1) + ", " + duration() + "Days"; 

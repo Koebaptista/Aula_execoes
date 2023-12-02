@@ -31,9 +31,7 @@ public class Testes {
 		
 		LocalDate dataOut = LocalDate.parse(checkout, fmt1);
 		
-		Duration drt1 = Duration.between(dataIn1, dataOut);
-		
-		if(drt1.toDays() < 0 ) {
+		if(duracaoEntre(dataIn1, dataOut) < 0 ) {
 			System.out.println("Error in reservation: Check-out date must be after check-in date");
 			
 		}else {
@@ -56,12 +54,12 @@ public class Testes {
 		
 		dataOut = LocalDate.parse(checkout, fmt1);
 		
-		Duration drt2 = Duration.between(dataIn1, dataIn2);
 		
-		if(drt1.toDays() < 0 ) {
+		
+		if(duracaoEntre(dataIn1, dataOut)< 0 ) {
 			System.out.println("Error in reservation: Check-out date must be after check-in date");
 		}
-		else if (drt2.toDays() < 0){
+		else if (duracaoEntre(dataIn1, dataIn2) < 0){
 			System.out.println("Error in reservation: Reservation dates for update must be future dates");
 		}
 		else {
@@ -70,5 +68,11 @@ public class Testes {
 		}
 		
 		sc.close();
+	}
+	public static long duracaoEntre(LocalDate data1, LocalDate data2) {
+		
+		Duration drt = Duration.between(data1, data2);
+		return drt.toDays();
+		
 	}
 }
